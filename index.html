@@ -361,8 +361,8 @@
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-verde-principal focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="CNPJ" class="block text-sm font-medium text-gray-700 mb-1">CNPJ</label>
-                                    <input type="text" id="CNPJ" name="CNPJ" required
+                                    <label for="cnpj" class="block text-sm font-medium text-gray-700 mb-1">CNPJ</label>
+                                    <input type="text" id="cnpj" name="cnpj" required
                                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-verde-principal focus:border-transparent">
                                 </div>
                             </div>
@@ -516,12 +516,10 @@
             // 2. Coletar os dados do formulário
             const formData = new FormData(form);
             const data = Object.fromEntries(formData)
-            console.log(data)
-
 
             // 3. (A PARTE REAL) Enviar os dados para o seu servidor
             try {
-                const response = await fetch('https://8pro-api.mahus.com.br/items/pre_registration', {
+                const response = await fetch('https://8pro-node-api.mahus.com.br/pre-registration', {
                     method: 'POST',
                     body: JSON.stringify(data),
                     mode: "cors",
@@ -540,6 +538,7 @@
                 button.classList.remove('bg-verde-principal');
                 button.classList.add('bg-green-600');
                 form.reset();
+                alert('Seu pré-cadastro foi realizado com sucesso. Em breve entraremos em contato para te falar das novidades!')
 
             } catch (error) {
                 // 5. Se deu Errado: Mostrar erro e reverter o botão
